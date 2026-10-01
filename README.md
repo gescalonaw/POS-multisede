@@ -125,7 +125,7 @@ En producción y en mantenimiento activo. En desarrollo de una versión independ
 que corra sin WordPress, para locales sin conexión a internet.
 
 **Gabriela Escalona** — Concepción, Chile
-[LinkedIn]([URL](https://www.linkedin.com/in/gabriela-escalona-weldt-b32855243/?isSelfProfile=true)) · [correo](mailto:gescalonaweldt@gmail.com) 
+[LinkedIn](https://www.linkedin.com/in/gabriela-escalona-weldt-b32855243/) · [Correo](mailto:gescalonaweldt@gmail.com)
 
 ---
 
