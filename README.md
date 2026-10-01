@@ -124,11 +124,11 @@ equivocado arruina el reporte del turno.
 En producción y en mantenimiento activo. En desarrollo de una versión independiente
 que corra sin WordPress, para locales sin conexión a internet.
 
-**Gabriela Escalona** — Desarrolladora de software, Concepción, Chile
+**Gabriela Escalona** — Concepción, Chile
 [LinkedIn]([URL](https://www.linkedin.com/in/gabriela-escalona-weldt-b32855243/?isSelfProfile=true)) · [correo](mailto:gescalonaweldt@gmail.com) 
 
 ---
 
-© [AÑO] Gabriela Escalona. Todos los derechos reservados.
+© 2026 Gabriela Escalona. Todos los derechos reservados.
 Las capturas y la documentación de este repositorio se publican con fines de
 portafolio. El software no es de código abierto.
