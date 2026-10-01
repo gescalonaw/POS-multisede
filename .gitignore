@@ -1,0 +1,19 @@
+# Este repositorio es solo documentación: el código fuente del producto NO va aquí.
+# Las reglas de abajo son una red de seguridad por si se arrastra algo por error.
+
+*.php
+*.sql
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.pem
+*.key
+.env
+config.php
+node_modules/
+vendor/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
