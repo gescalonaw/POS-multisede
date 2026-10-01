@@ -1,9 +1,10 @@
-# POS y Control de Inventario Multisede
+# POS Multisede para WordPress + WooCommerce
 
-Sistema de punto de venta e inventario para negocios con más de un local.
-En operación diaria desde [AÑO] en [NOMBRE DEL NEGOCIO O "un negocio de retail en Concepción"].
+Plugin de punto de venta e inventario que conecta el local físico con la tienda
+online. En operación diaria desde [AÑO] en [NOMBRE DEL NEGOCIO], sobre bodega,
+tienda presencial y tienda online.
 
-> **Este repositorio muestra el producto, no el código.** Es un sistema comercial
+> **Este repositorio muestra el producto, no el código.** Es un plugin comercial
 > y su código fuente es privado. Si eres parte de un proceso de selección y
 > quieres revisarlo, escríbeme y te doy acceso de lectura.
 
@@ -13,72 +14,67 @@ En operación diaria desde [AÑO] en [NOMBRE DEL NEGOCIO O "un negocio de retail
 
 ## El problema
 
-Un negocio con bodega, local y tienda online termina llevando el inventario en
-tres lugares que nunca coinciden. Se vende algo en el local y la web sigue
-ofreciéndolo; se traslada stock a bodega y nadie lo registra; al cierre del día
-la caja no cuadra y no hay forma de saber dónde se perdió la diferencia.
+Una tienda que vende por WooCommerce y también en mostrador lleva, en la
+práctica, dos inventarios. Se vende la última unidad en el local y la web sigue
+ofreciéndola; llega el pedido online y no hay stock. La solución habitual es que
+alguien actualice a mano, dos veces al día, y aun así se sobrevende.
 
-Este sistema resuelve eso con una sola fuente de verdad: cada venta, traslado,
-ajuste y devolución queda registrado como un movimiento con su sede, su usuario
-y su hora.
+Este plugin hace que **la tienda online sea una sede más** del inventario. Una
+venta en el mostrador descuenta stock igual que un pedido de WooCommerce, y
+ambas quedan en el mismo registro de movimientos.
 
 ---
 
-## El punto de venta
+## Qué hace
 
-Pensado para que una cajera sin capacitación previa pueda operarlo, con pantalla
-táctil o con teclado a ciegas.
+### Punto de venta en el navegador
 
 ![Venta en curso](docs/capturas/02-pos-venta.png)
 
-Buscador que filtra mientras se escribe, accesos rápidos a los productos más
-vendidos de cada sede, y campo dedicado para el lector de código de barras. El
-stock disponible se muestra en cada producto y se bloquea la venta si no alcanza.
+Pantalla completa, fuera de wp-admin, pensada para la cajera y no para quien
+administra. Buscador que filtra mientras se escribe, accesos rápidos a los
+productos más vendidos de cada sede, lector de código de barras y control de
+stock disponible en tiempo real.
 
 ### Pagos mixtos
 
 ![Cobro con pago mixto](docs/capturas/03-pos-cobro-mixto.png)
 
-Una boleta puede repartirse entre **efectivo, débito, crédito y transferencia**
-en cualquier combinación. El monto de cada medio se prorratea línea por línea, de
-modo que los reportes por producto siguen siendo exactos aunque el pago haya sido
-mixto. El vuelto se calcula solo sobre el efectivo. Las transferencias registran
-su número de comprobante.
+Una boleta se reparte entre **efectivo, débito, crédito y transferencia** en
+cualquier combinación. Cada medio se prorratea línea por línea, de modo que los
+reportes por producto siguen siendo exactos aunque el pago haya sido mixto. Las
+transferencias registran su número de comprobante.
 
-![Comprobante](docs/capturas/04-pos-boleta.png)
+### Inventario multisede
 
----
+![Inventario](docs/capturas/04-inventario.png)
 
-## Inventario por sede
-
-![Inventario](docs/capturas/07-inventario.png)
-
-- Stock independiente por sede, con traslados entre ellas que se registran como
+- Stock independiente por sede, con traslados que quedan registrados como
   movimiento de salida y de entrada
-- Descuento de stock seguro cuando dos cajas venden el mismo producto al mismo
-  tiempo
+- Sedes configurables: se crean, desactivan y eliminan desde el panel, sin tocar
+  código
+- Sincronización bidireccional con el stock de WooCommerce
 - Importador CSV masivo para la carga inicial
 - Ajustes manuales con motivo, siempre auditables
 
----
-
-## Reportes y cierre de caja
+### Reportes
 
 ![Productos vendidos](docs/capturas/05-productos-vendidos.png)
 
 Unidades vendidas, devueltas, neto, boletas y total por producto, con el **stock
-actual en cada sede** en la misma tabla: responde "qué se vende y cuánto me
-queda" sin cruzar dos planillas. Exporta a CSV todo el período filtrado, no solo
-la página en pantalla.
+actual en cada sede** en la misma tabla. Exporta a CSV todo el período filtrado,
+no solo la página en pantalla.
 
 ![Ventas](docs/capturas/06-ventas.png)
 
-![Cierres de caja](docs/capturas/08-cierres-de-caja.png)
+### Cierre de caja
 
-Al cerrar el turno, la cajera cuenta el efectivo y anota los totales de tarjeta y
-transferencia. El sistema compara los tres contra lo registrado y guarda las
-diferencias. La cajera confirma el cierre pero no ve los montos esperados: eso lo
-revisa quien administra, y le llega por correo si hay descuadre.
+![Cierres de caja](docs/capturas/07-cierres-de-caja.png)
+
+La cajera cuenta el efectivo y anota los totales de tarjeta y transferencia. El
+sistema compara los tres contra lo registrado, guarda las diferencias y avisa por
+correo a los *shop managers* cuando hay descuadre. La cajera confirma el cierre
+pero no ve los montos esperados: eso lo revisa quien administra.
 
 ---
 
@@ -86,45 +82,47 @@ revisa quien administra, y le llega por correo si hay descuadre.
 
 | | |
 |---|---|
-| **Backend** | PHP 8, PDO, sin framework ni dependencias externas |
-| **Base de datos** | MySQL / MariaDB o SQLite, mismo esquema en ambos motores |
+| **Plataforma** | WordPress 6.x, WooCommerce |
+| **Backend** | PHP 8, `$wpdb` con tablas propias, REST API vía `register_rest_route` |
 | **Frontend** | JavaScript sin framework, aplicación de una sola página |
-| **Integración** | WooCommerce (versión plugin) |
-| **Despliegue** | Hosting compartido, servidor propio o el computador del local |
+| **Permisos** | Capacidades de WordPress, con roles diferenciados para cajera y administración |
+| **Correo** | `wp_mail` para los avisos de cierre de caja |
 
-Existe en dos versiones: un **plugin de WordPress** integrado con el flujo de
-pedidos de WooCommerce, y una **aplicación independiente** que corre sin
-WordPress, pensada para locales que no tienen internet.
+El plugin no usa el catálogo de WooCommerce como fuente de inventario: mantiene
+sus propias tablas de stock por sede y sincroniza contra WooCommerce. Eso permite
+que un producto exista en bodega sin estar publicado en la tienda, y que el
+inventario del local no dependa de cómo esté configurado el catálogo online.
 
 ---
 
 ## Decisiones de diseño que vale la pena contar
 
+**La tienda online es una sede, no un caso especial.** Tratarla como "la web" y
+no como una ubicación más obligaba a escribir reglas aparte en cada consulta de
+stock. Modelarla como una sede con una característica distinta —refleja el stock
+de WooCommerce— dejó el resto del sistema sin excepciones, y permitió que el
+negocio pueda crear o reemplazar esa sede desde el panel.
+
 **Los pagos mixtos se prorratean, no se adjudican.** Lo fácil es marcar la boleta
-completa con un método "mixto" y seguir. Pero entonces el reporte de ventas por
-medio de pago deja de servir. Cada línea reparte el pago en la misma proporción
-que el total, y la última línea absorbe el redondeo, de modo que la suma de las
-líneas siempre coincide exactamente con la boleta.
+completa como "mixto" y seguir. Pero entonces el reporte por medio de pago deja
+de servir. Cada línea reparte el pago en la misma proporción que el total y la
+última absorbe el redondeo, de modo que la suma de las líneas coincide
+exactamente con la boleta.
 
-**Sin licencia, el sistema sigue vendiendo.** El licenciamiento limita las
-funciones de gestión, no la caja. Dejar a un negocio sin poder cobrar por un
-problema administrativo le cuesta plata real a un tercero, y ninguna política de
-cobro justifica eso.
+**El descuento de stock resiste dos cajas simultáneas.** La condición de
+disponibilidad va dentro del `UPDATE`, no en una lectura previa: el motor de base
+de datos garantiza que solo una de dos cajas se lleve la última unidad.
 
-**La licencia se valida sin conexión.** Un local sin internet no puede consultar
-un servidor de licencias. Cada licencia es un bloque firmado criptográficamente
-que el sistema verifica contra una clave pública incrustada: funciona offline y
-el cliente no puede alterar su plan ni su vencimiento sin invalidar la firma.
-
-**Un solo esquema para dos motores.** SQLite para el local que no quiere
-administrar un servidor de base de datos; MySQL para quien ya lo tiene. Mismo
-código, misma funcionalidad, el instalador decide.
+**Las zonas horarias se fijaron en `America/Santiago`.** WordPress y MySQL no
+siempre coinciden en qué hora es, y un cierre de caja registrado con el día
+equivocado arruina el reporte del turno.
 
 ---
 
 ## Estado
 
-En producción y en mantenimiento activo. Disponible para licenciamiento.
+En producción y en mantenimiento activo. Existe además una versión independiente
+que corre sin WordPress, para locales sin conexión a internet.
 
 **Gabriela Escalona** — Desarrolladora de software, Concepción, Chile
 [LinkedIn](URL) · [correo](mailto:TU-CORREO) · [pavariar.cl](https://pavariar.cl)
