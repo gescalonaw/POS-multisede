@@ -41,7 +41,7 @@ stock disponible en tiempo real.
 ![Cobro con pago mixto](docs/capturas/03-pos-cobro-mixto.png)
 
 Una boleta se reparte entre **efectivo, débito, crédito y transferencia** en
-cualquier combinación. Cada medio se prorratea línea por línea, de modo que los
+cualquier combinación. Cada medio se distribuye línea por línea, de modo que los
 reportes por producto siguen siendo exactos aunque el pago haya sido mixto. Las
 transferencias registran su número de comprobante.
 
