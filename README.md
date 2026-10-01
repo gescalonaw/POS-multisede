@@ -103,7 +103,7 @@ stock. Modelarla como una sede con una característica distinta —refleja el st
 de WooCommerce— dejó el resto del sistema sin excepciones, y permitió que el
 negocio pueda crear o reemplazar esa sede desde el panel.
 
-**Los pagos mixtos se prorratean, no se adjudican.** Lo fácil es marcar la boleta
+**Los pagos mixtos se informan.** Lo fácil es marcar la boleta
 completa como "mixto" y seguir. Pero entonces el reporte por medio de pago deja
 de servir. Cada línea reparte el pago en la misma proporción que el total y la
 última absorbe el redondeo, de modo que la suma de las líneas coincide
@@ -121,11 +121,11 @@ equivocado arruina el reporte del turno.
 
 ## Estado
 
-En producción y en mantenimiento activo. Existe además una versión independiente
-que corre sin WordPress, para locales sin conexión a internet.
+En producción y en mantenimiento activo. En desarrollo de una versión independiente
+que corra sin WordPress, para locales sin conexión a internet.
 
 **Gabriela Escalona** — Desarrolladora de software, Concepción, Chile
-[LinkedIn](URL) · [correo](mailto:TU-CORREO) · [pavariar.cl](https://pavariar.cl)
+[LinkedIn]([URL](https://www.linkedin.com/in/gabriela-escalona-weldt-b32855243/?isSelfProfile=true)) · [correo](mailto:gescalonaweldt@gmail.com) 
 
 ---
 
