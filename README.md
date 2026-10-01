@@ -1,7 +1,7 @@
 # POS Multisede para WordPress + WooCommerce
 
 Plugin de punto de venta e inventario que conecta el local físico con la tienda
-online. En operación diaria desde [AÑO] en [NOMBRE DEL NEGOCIO], sobre bodega,
+online. En operación diaria desde septiembre 2026 en PaVariar, sobre bodega,
 tienda presencial y tienda online.
 
 > **Este repositorio muestra el producto, no el código.** Es un plugin comercial
