@@ -124,10 +124,11 @@ equivocado arruina el reporte del turno.
 En producción y en mantenimiento activo. En desarrollo de una versión independiente
 que corra sin WordPress, para locales sin conexión a internet.
 
-**Gabriela Escalona** — Concepción, Chile
-[LinkedIn](https://www.linkedin.com/in/gabriela-escalona-weldt-b32855243/) · [Correo](mailto:gescalonaweldt@gmail.com)
+### Desarrollado por
 
----
+**Gabriela Escalona** — [LinkedIn](https://linkedin.com/in/gabriela-escalona-weldt-b32855243) · [Portafolio](https://github.com/gescalonaw)
+
+**Miko Peñailillo** — [LinkedIn](https://www.linkedin.com/in/mirko-peñailillo-vásquez-70094339b) · [Portafolio](https://github.com/MirkoVP)
 
 © 2026 Gabriela Escalona. Todos los derechos reservados.
 Las capturas y la documentación de este repositorio se publican con fines de
